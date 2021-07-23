@@ -2,19 +2,37 @@
   "name": "@soluble/bundle-nm-cli",
   "version": "0.0.1",
   "license": "MIT",
-  "private": true,
   "homepage": "https://github.com/belgattitude/bundle-nm",
   "repository": {
     "type": "git",
     "url": "https://github.com/belgattitude/bundle-nm",
     "directory": "packages/bundle-nm-cli"
   },
+  "bugs": "https://github.com/belgattitude/bundle-nm/issues",
   "author": {
     "name": "Vanvelthem Sébastien",
     "url": "https://github.com/belgattitude"
   },
-  "source": "./src/index.ts",
+  "bin": "./bin/run",
+  "main": "src/index.js",
+  "files": [
+    "/bin",
+    "/lib",
+    "/oclif.manifest.json"
+  ],
+  "types": "lib/index.d.ts",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "bundle-nm-cli",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
   "scripts": {
+    "runCmd": "./bin/run",
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "version": "oclif-dev readme && git add README.md",
     "clean": "rimraf --no-glob ./dist ./coverage ./tsconfig.tsbuildinfo && jest --clear-cache",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
@@ -25,9 +43,13 @@
     "fix:all-files": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
   },
   "dependencies": {
-    "@vercel/nft": "0.13.1"
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.2",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
     "@types/node": "16.4.0",
     "@typescript-eslint/eslint-plugin": "4.28.4",
     "@typescript-eslint/parser": "4.28.4",
@@ -49,5 +71,8 @@
     "ts-jest": "27.0.4",
     "ts-node": "10.1.0",
     "typescript": "4.3.5"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

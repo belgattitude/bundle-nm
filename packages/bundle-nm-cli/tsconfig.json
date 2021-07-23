@@ -2,12 +2,12 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "jsx": "react-jsx",
-    "noEmit": false,
-    "composite": false,
+    "declaration": true,
+    "importHelpers": true,
+    "module": "commonjs",
+    "outDir": "lib",
+    "strict": true,
+    "target": "es2017",
     "incremental": true
   },
   "exclude": ["node_modules"],
