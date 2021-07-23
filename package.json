@@ -1,0 +1,58 @@
+{
+  "name": "bundle-nm-monorepo",
+  "license": "MIT",
+  "private": true,
+  "homepage": "https://github.com/belgattitude/bundle-nm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/belgattitude/bundle-nm"
+  },
+  "author": {
+    "name": "Vanvelthem Sébastien",
+    "url": "https://github.com/belgattitude"
+  },
+  "keywords": [
+    "node-tracing",
+    "optimizer"
+  ],
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "yarn workspaces foreach -ptv run clean",
+    "test": "run-s 'test:*'",
+    "test:unit": "yarn workspaces foreach -ptv run test:unit",
+    "fix:staged-files": "yarn workspaces foreach -t run fix:staged-files",
+    "fix:all-files": "yarn workspaces foreach -ptv run fix:all-files",
+    "changeset": "changeset",
+    "release": "yarn build && changeset publish",
+    "deps:check": "npm-check-updates --deep --dep prod,dev,optional",
+    "deps:update": "npm-check-updates -u --deep --dep prod,dev,optional",
+    "typecheck": "yarn workspaces foreach -ptv run typecheck",
+    "check:install": "yarn dlx @yarnpkg/doctor .",
+    "lint": "yarn workspaces foreach -ptv run lint",
+    "build": "yarn workspaces foreach -ptv run build",
+    "postinstall": "is-ci || yarn husky install",
+    "clear:node_modules": "rimraf '**/node_modules'"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "0.4.0",
+    "@changesets/cli": "2.16.0",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "husky": "7.0.1",
+    "is-ci": "3.0.0",
+    "lint-staged": "11.0.1",
+    "npm-check-updates": "11.8.3",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.3.2",
+    "rimraf": "3.0.2",
+    "shell-quote": "1.7.2"
+  },
+  "engines": {
+    "node": ">=14",
+    "yarn": ">=1.22.0",
+    "npm": "please-use-yarn"
+  },
+  "packageManager": "yarn@3.0.0-rc.12"
+}

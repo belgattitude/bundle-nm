@@ -1,0 +1,53 @@
+{
+  "name": "@soluble/bundle-nm-cli",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "homepage": "https://github.com/belgattitude/bundle-nm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/belgattitude/bundle-nm",
+    "directory": "packages/bundle-nm-cli"
+  },
+  "author": {
+    "name": "Vanvelthem Sébastien",
+    "url": "https://github.com/belgattitude"
+  },
+  "source": "./src/index.ts",
+  "scripts": {
+    "clean": "rimraf --no-glob ./dist ./coverage ./tsconfig.tsbuildinfo && jest --clear-cache",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit",
+    "test": "run-s 'test:*'",
+    "test:unit": "jest --config jest.config.js --maxWorkers=50% --color $@",
+    "ci-test:unit": "jest --config jest.config.js --runInBand --color $@",
+    "fix:staged-files": "lint-staged --allow-empty",
+    "fix:all-files": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
+  },
+  "dependencies": {
+    "@vercel/nft": "0.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "16.4.0",
+    "@typescript-eslint/eslint-plugin": "4.28.4",
+    "@typescript-eslint/parser": "4.28.4",
+    "eslint": "7.31.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-jest": "24.4.0",
+    "eslint-plugin-jest-formatting": "3.0.0",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "3.4.0",
+    "eslint-plugin-react": "7.24.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-plugin-testing-library": "4.10.1",
+    "jest": "27.0.6",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.3.2",
+    "rimraf": "3.0.2",
+    "shell-quote": "1.7.2",
+    "ts-jest": "27.0.4",
+    "ts-node": "10.1.0",
+    "typescript": "4.3.5"
+  }
+}
