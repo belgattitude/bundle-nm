@@ -1,6 +1,6 @@
 import { build } from 'gluegun';
 
-async function run(argv: any) {
+async function run(argv: string[]) {
   // create a CLI runtime
   const cli = build()
     .brand('bundle-nm-cli')

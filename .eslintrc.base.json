@@ -8,7 +8,6 @@
   "plugins": [
     "@typescript-eslint",
     "prettier",
-    "react-hooks",
     "jest",
     "jest-formatting"
   ],

@@ -3,6 +3,7 @@ import { BundleAnalyzer } from '@soluble/bundle-nm-core';
 
 const command: GluegunCommand = {
   name: 'bundle-nm-cli',
+
   run: async (toolbox) => {
     const { print } = toolbox;
 
