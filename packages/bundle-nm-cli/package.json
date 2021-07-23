@@ -1,6 +1,7 @@
 {
   "name": "@soluble/bundle-nm-cli",
   "version": "0.0.1",
+  "description": "bundle-nm-cli CLI",
   "license": "MIT",
   "homepage": "https://github.com/belgattitude/bundle-nm",
   "repository": {
@@ -13,27 +14,19 @@
     "name": "Vanvelthem Sébastien",
     "url": "https://github.com/belgattitude"
   },
-  "bin": "./bin/run",
-  "main": "src/index.js",
+  "types": "build/types/types.d.ts",
+  "bin": "bin/bundle-nm-cli",
   "files": [
-    "/bin",
-    "/lib",
-    "/oclif.manifest.json"
+    "tsconfig.json",
+    "build",
+    "LICENSE",
+    "README.md",
+    "bin"
   ],
-  "types": "lib/index.d.ts",
-  "oclif": {
-    "commands": "./lib/commands",
-    "bin": "bundle-nm-cli",
-    "plugins": [
-      "@oclif/plugin-help"
-    ]
-  },
   "scripts": {
-    "runCmd": "./bin/run",
-    "postpack": "rm -f oclif.manifest.json",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "version": "oclif-dev readme && git add README.md",
-    "clean": "rimraf --no-glob ./dist ./coverage ./tsconfig.tsbuildinfo && jest --clear-cache",
+    "build": "yarn clean && tsc -p . && yarn copy-templates",
+    "copy-templates": "syncdir ./src/templates ./build/templates --copy",
+    "clean": "rimraf --no-glob ./build ./dist ./coverage ./tsconfig.tsbuildinfo && jest --clear-cache",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
     "test": "run-s 'test:*'",
@@ -43,13 +36,10 @@
     "fix:all-files": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
   },
   "dependencies": {
-    "@oclif/command": "^1.8.0",
-    "@oclif/config": "^1.17.0",
-    "@oclif/plugin-help": "^3.2.2",
-    "tslib": "^2.3.0"
+    "gluegun": "4.6.1"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.26.0",
+    "@types/jest": "^26.0.24",
     "@types/node": "16.4.0",
     "@typescript-eslint/eslint-plugin": "4.28.4",
     "@typescript-eslint/parser": "4.28.4",
@@ -68,6 +58,7 @@
     "prettier": "2.3.2",
     "rimraf": "3.0.2",
     "shell-quote": "1.7.2",
+    "sync-directory": "2.2.22",
     "ts-jest": "27.0.4",
     "ts-node": "10.1.0",
     "typescript": "4.3.5"

@@ -21,16 +21,16 @@ const getTsConfigBasePaths = () => {
 const config = {
   name: 'core-lib:unit',
   testRunner: 'jest-circus/runner',
-  testEnvironment: 'jsdom',
+  testEnvironment: 'node',
   resetMocks: true,
   resetModules: true,
   restoreMocks: true,
   verbose: true,
-  rootDir: './src',
+  rootDir: './',
   transform: {
     ...tsjPreset.transform,
   },
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  setupFilesAfterEnv: [],
   testMatch: ['<rootDir>/**/*.{spec,test}.{js,jsx,ts,tsx}'],
   moduleNameMapper: {
     // For @testing-library/react

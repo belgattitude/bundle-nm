@@ -2,9 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "es6",
+    "rootDir": "./",
     "module": "commonjs",
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "noEmit": true,
     "incremental": true,
     "noImplicitAny": false,
