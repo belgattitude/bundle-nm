@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": false,
-    "experimentalDecorators": true,
     "lib": [
       "es2015",
       "scripthost",
@@ -22,8 +21,11 @@
     "strict": false,
     "target": "es5",
     "declaration": true,
-    "declarationDir": "build/types"
+    "declarationDir": "build/types",
+    "incremental": true
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules",
+    "./__tests__"
+  ],
   "include": ["**/*.ts", "**/*.tsx"]
 }

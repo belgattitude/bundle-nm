@@ -1,8 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext"
+    "rootDir": "./src",
+    "noEmit": false,
+    "incremental": false,
+    "outDir": "build"
   },
-  "exclude": ["dist", "**/__tests__/*"]
+  "exclude": ["**/__tests__/*"]
 }

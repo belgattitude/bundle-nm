@@ -24,7 +24,9 @@
     "bin"
   ],
   "scripts": {
-    "build": "yarn clean && tsc -p . && yarn copy-templates",
+    "run:dev": "yarn bundle-nm-cli",
+    "run:dist": "yarn build && yarn bundle-nm-cli --compiled-build",
+    "build": "yarn clean && tsc -p ./tsconfig.build.json && yarn copy-templates",
     "copy-templates": "syncdir ./src/templates ./build/templates --copy",
     "clean": "rimraf --no-glob ./build ./dist ./coverage ./tsconfig.tsbuildinfo && jest --clear-cache",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",

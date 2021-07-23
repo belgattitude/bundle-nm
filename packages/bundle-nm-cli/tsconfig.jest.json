@@ -11,5 +11,8 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "isolatedModules": true
-  }
+  },
+  "exclude": ["node_modules",
+    "./__tests__"
+  ]
 }
