@@ -19,14 +19,14 @@ const getTsConfigBasePaths = () => {
 /** @typedef {import('ts-jest/dist/types')} */
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
-  name: 'core-lib:unit',
+  name: 'bundle-nm-core:unit',
   testRunner: 'jest-circus/runner',
   testEnvironment: 'node',
   resetMocks: true,
   resetModules: true,
   restoreMocks: true,
   verbose: true,
-  rootDir: './',
+  rootDir: './src',
   transform: {
     ...tsjPreset.transform,
   },

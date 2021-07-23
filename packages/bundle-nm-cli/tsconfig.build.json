@@ -1,10 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "rootDir": "./src",
     "noEmit": false,
     "incremental": false,
-    "outDir": "build"
+    "outDir": "build",
+    "paths": {}
   },
   "exclude": ["**/__tests__/*"]
 }

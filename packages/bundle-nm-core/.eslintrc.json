@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "extends": [
+    "../../.eslintrc.base.json"
+  ],
+  "env": {
+    "browser": false
+  },
+  "overrides": []
+}
