@@ -28,7 +28,7 @@ node_modules
 ./docker-compose.override.yml
 
 # cache
-**/tsconfig.tsbuildinfo
+**/*.tsbuildinfo
 
 # misc
 .DS_Store

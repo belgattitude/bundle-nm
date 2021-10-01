@@ -4,11 +4,9 @@
     "module": "ES2015",
     "target": "ES5",
     "allowSyntheticDefaultImports": true,
-    "rootDir": "./src",
     "noEmit": false,
     "incremental": false,
-    "outDir": "build",
-    "paths": {}
+    "outDir": "build"
   },
   "exclude": ["**/__tests__/*"]
 }

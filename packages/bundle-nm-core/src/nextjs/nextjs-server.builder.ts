@@ -1,12 +1,12 @@
-import fsExtra from 'fs-extra';
-import { SetRequired } from 'type-fest';
 import path from 'path';
-import { isPlainObject } from '../utils/typeguards';
 import {
   nodeFileTrace,
   NodeFileTraceResult,
   NodeFileTraceReasons,
 } from '@vercel/nft';
+import fsExtra from 'fs-extra';
+import { SetRequired } from 'type-fest';
+import { isPlainObject } from '../utils/typeguards';
 
 type ServerPagesEntry = {
   route: string;

@@ -5,7 +5,6 @@
     "lib": ["es2017"],
     "module": "esnext",
     "noEmit": false,
-    "composite": true,
     "incremental": true
   },
   "exclude": ["node_modules"],

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import cac from 'cac';
-import { NextjsServerBuilder } from '@soluble/bundle-nm-core';
 import fs from 'fs';
-import prettyBytes from 'pretty-bytes';
+import { NextjsServerBuilder } from '@soluble/bundle-nm-core';
+import cac from 'cac';
 import { green } from 'nanocolors';
+import prettyBytes from 'pretty-bytes';
 
 const cli = cac();
 
