@@ -4,11 +4,10 @@
     "require": ["tsconfig-paths/register"]
   },
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es2017"],
-    "module": "CommonJS",
+    "lib": ["es2020"],
+    "module": "commonjs",
+    "target": "es2020",
     "noEmit": true,
-    "composite": false,
     "incremental": true,
     "baseUrl": ".",
     "paths": {

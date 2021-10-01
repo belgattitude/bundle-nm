@@ -2,9 +2,9 @@ export const isNonEmptyString = (v: unknown, trim = true): v is string => {
   return typeof v === 'string' && (trim ? v.trim() : v).length > 0;
 };
 
-export const isPlainObject = <T = unknown, K extends string | number = string>(
+export const isPlainObject = <T = unknown>(
   v: unknown
-): v is Record<K, T> => {
+): v is Record<string | number | symbol, T> => {
   return (
     typeof v === 'object' &&
     v !== null &&

@@ -1,22 +1,50 @@
-import { build } from 'gluegun';
+#!/usr/bin/env node
+import cac from 'cac';
+import { NextjsServerBuilder } from '@soluble/bundle-nm-core';
+import fs from 'fs';
+import prettyBytes from 'pretty-bytes';
 
-async function run(argv: string[]) {
-  // create a CLI runtime
-  const cli = build()
-    .brand('bundle-nm-cli')
-    .src(__dirname)
-    .plugins('./node_modules', { matching: 'bundle-nm-cli-*', hidden: true })
-    .help() // provides default for help, h, --help, -h
-    .version() // provides default for version, v, --version, -v
-    .create();
-  // enable the following method if you'd like to skip loading one of these core extensions
-  // this can improve performance if they're not necessary for your project:
-  // .exclude(['meta', 'strings', 'print', 'filesystem', 'semver', 'system', 'prompt', 'http', 'template', 'patching', 'package-manager'])
-  // and run it
-  const toolbox = await cli.run(argv);
+const cli = cac();
 
-  // send it back (for testing, mostly)
-  return toolbox;
+cli
+  .command('<target-folder>', 'Generate a new project to target folder')
+  .option(
+    '--npm-client <client>',
+    `Choose an npm client for installing packages ('yarn' | 'npm' | 'pnpm')`
+  )
+  .action(async (targetFolder, { npmClient }) => {
+    const baseDir = '/home/sebastien/github/nextjs-monorepo-example';
+    const buildDir = `${baseDir}/apps/web-app/.next`;
+
+    const builder = new NextjsServerBuilder({
+      baseDir,
+      buildDir,
+    });
+    const trace = await builder.getTrace();
+    let total = 0;
+    let count = 0;
+    trace.fileList.map((file) => {
+      const { size } = fs.statSync(`${baseDir}/${file}`);
+      total += size;
+      count++;
+      console.log('file', size, file);
+    });
+    console.log('count', count);
+    console.log('total', prettyBytes(total));
+  });
+
+cli.help();
+cli.version(require('../package').version);
+
+try {
+  // Parse CLI args without running the command
+  cli.parse(process.argv, { run: false });
+  // Run the command yourself
+  // You only need `await` when your command action returns a Promise
+  cli.runMatchedCommand();
+} catch (error) {
+  // Handle error here..
+  // e.g.
+  console.error(error instanceof Error ? error.message : 'Unknown error type');
+  process.exit(1);
 }
-
-module.exports = { run };
