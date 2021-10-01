@@ -3,6 +3,7 @@ import cac from 'cac';
 import { NextjsServerBuilder } from '@soluble/bundle-nm-core';
 import fs from 'fs';
 import prettyBytes from 'pretty-bytes';
+import { green } from 'nanocolors';
 
 const cli = cac();
 
@@ -27,10 +28,10 @@ cli
       const { size } = fs.statSync(`${baseDir}/${file}`);
       total += size;
       count++;
-      console.log('file', size, file);
+      console.log('file', prettyBytes(size), file);
     });
-    console.log('count', count);
-    console.log('total', prettyBytes(total));
+    console.log('Number of files:', `${green(count)}`);
+    console.log('Total size:', `${green(prettyBytes(total))}`);
   });
 
 cli.help();

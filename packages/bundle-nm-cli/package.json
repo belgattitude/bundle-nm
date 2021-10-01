@@ -38,11 +38,12 @@
   },
   "dependencies": {
     "@soluble/bundle-nm-core": "workspace:*",
-    "cac": "^6.7.3",
-    "pretty-bytes": "^5.6.0"
+    "cac": "6.7.3",
+    "nanocolors": "0.2.12",
+    "pretty-bytes": "5.6.0"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
+    "@types/jest": "27.0.2",
     "@types/node": "16.10.2",
     "@typescript-eslint/eslint-plugin": "4.32.0",
     "@typescript-eslint/parser": "4.32.0",
@@ -57,13 +58,13 @@
     "npm-run-all": "4.1.5",
     "prettier": "2.4.1",
     "rimraf": "3.0.2",
-    "rollup": "^2.57.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup": "2.57.0",
+    "rollup-plugin-terser": "7.0.2",
+    "rollup-plugin-typescript2": "0.30.0",
     "shell-quote": "1.7.2",
     "ts-jest": "27.0.5",
     "ts-node": "10.2.1",
-    "tsconfig-paths": "^3.11.0",
+    "tsconfig-paths": "3.11.0",
     "typescript": "4.4.3"
   },
   "engines": {
