@@ -23,15 +23,17 @@ cli
 cli.help();
 cli.version(require('../package').version);
 
-try {
-  // Parse CLI args without running the command
-  cli.parse(process.argv, { run: false });
-  // Run the command yourself
-  // You only need `await` when your command action returns a Promise
-  await cli.runMatchedCommand();
-} catch (error) {
-  // Handle error here..
-  // e.g.
-  console.error(error.message);
-  process.exit(1);
-}
+(async () => {
+  try {
+    // Parse CLI args without running the command
+    cli.parse(process.argv, { run: false });
+    // Run the command yourself
+    // You only need `await` when your command action returns a Promise
+    await cli.runMatchedCommand();
+  } catch (error) {
+    // Handle error here..
+    // e.g.
+    console.error(error.message);
+    process.exit(1);
+  }
+})();
